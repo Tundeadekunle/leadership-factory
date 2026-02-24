@@ -19,8 +19,10 @@ export default function NotesList({ notes, showExpiry = false }: NotesListProps)
 return (
     <ul className="divide-y divide-gray-200">
       {notes.map((note) => {
-        const expiresIn = new Date(note.expires_at).getTime() - Date.now()
-        const hoursLeft = Math.max(0, Math.floor(expiresIn / (1000 * 60 * 60)))
+        const expiresAt = note.expires_at ? new Date(note.expires_at) : null
+        const expiresIn = expiresAt ? expiresAt.getTime() - Date.now() : null
+        const hoursLeft =
+          expiresIn === null ? null : Math.max(0, Math.floor(expiresIn / (1000 * 60 * 60)))
         return (
           <li key={note.id} className="py-4 flex items-center justify-between">
             <div>
@@ -28,7 +30,7 @@ return (
               <p className="text-sm text-gray-500">
                 Uploaded: {new Date(note.uploaded_at).toLocaleString()}
               </p>
-              {showExpiry && (
+              {showExpiry && note.expires_at && hoursLeft !== null && (
                 <p className="text-sm text-gray-500">
                   Expires in: {hoursLeft} hour{hoursLeft !== 1 ? 's' : ''}
                 </p>
