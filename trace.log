@@ -1,0 +1,14 @@
+21:32:44.683686 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/bin
+21:32:44.969861 common-init.c:57                  version 2.53.0.windows.1
+21:32:45.208925 common-init.c:58                  start 'C:\Program Files\Git\mingw64\bin\git.exe' push -u origin main
+21:32:45.282385 repository.c:237                  worktree 'C:/Users/Kathy Hiel/leadership-factory'
+21:32:45.282385 git.c:502               trace: built-in: git push -u origin main
+21:32:45.282385 git.c:503                         cmd_name push (push)
+21:32:45.282385 run-command.c:741                 child_start[0] git remote-https origin https://github.com/Tundeadekunle/leadership-factory.git
+21:32:45.282385 run-command.c:674       trace: run_command: GIT_DIR=.git git remote-https origin https://github.com/Tundeadekunle/leadership-factory.git
+21:32:45.282385 run-command.c:935       trace: start_command: git remote-https origin https://github.com/Tundeadekunle/leadership-factory.git
+21:32:45.298008 usage.c:92                        error cannot spawn git: Permission denied
+error: cannot spawn git: Permission denied
+21:32:45.313634 run-command.c:957                 child_exit[0] pid:-1 code:-1 elapsed:0.005462
+21:32:45.360511 transport-helper.c:163            exit elapsed:0.669808 code:255
+21:32:45.360511 trace2/tr2_tgt_normal.c:128       atexit elapsed:0.669914 code:255
