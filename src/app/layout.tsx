@@ -48,11 +48,33 @@
 
 
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat, Open_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
+
+// const montserrat = Montserrat({
+//   subsets: ['latin'],
+//   variable: '--font-montserrat',
+//   display: 'swap',
+// })
+
+// const openSans = Open_Sans({
+//   subsets: ['latin'],
+//   variable: '--font-open-sans',
+//   display: 'swap',
+// })
+
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+})
+
+const openSans = Open_Sans({ 
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+})
 
 export const metadata: Metadata = {
   title: 'Skill Leadership Factory',
@@ -66,7 +88,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${montserrat.variable} ${openSans.variable}`}>
         <Navbar />
         <main className="min-h-screen bg-gray-50">{children}</main>
       </body>

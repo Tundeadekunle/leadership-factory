@@ -119,13 +119,13 @@ export default function SignIn() {
 
 
 return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-500 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-[#0B1F3B] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-300">
             Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <p className="mt-2 text-center text-sm text-gray-400">
             Or{' '}
             <Link href="/auth/signup" className="font-medium text-primary-600 hover:text-primary-500">
               create a new account
@@ -162,7 +162,7 @@ return (
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black rounded-b-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm bg-white"
                 placeholder="Password"
               />
             </div>
@@ -181,6 +181,12 @@ return (
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </div>
+          {/* Inside the form, after the password input and before the submit button */}
+<div className="text-right">
+  <Link href="/auth/forgot-password" className="text-sm text-gray-300 hover:text-primary-500">
+    Forgot your password?
+  </Link>
+</div>
         </form>
       </div>
     </div>
