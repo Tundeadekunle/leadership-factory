@@ -163,45 +163,23 @@ import { redirect } from 'next/navigation'
 import LectureNotesList from '@/components/LectureNotesList'
 import AnnouncementsList from '@/components/AnnouncementsList'
 import AssessmentsList from '@/components/AssessmentsList'
-import NotesList from '@/components/NotesList'
 
 export default async function StudentDashboard() {
-  const supabase = await createClient() // no await!
-
+  const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/')
 
   const { data: profile, error: profileError } = await supabase
     .from('profiles')
-    .select('role')
+    .select('*')  // get all fields, including full_name
     .eq('id', user.id)
     .single()
 
-  // Logging to terminal
-  console.log('Student dashboard - user ID:', user.id)
-  console.log('Profile fetch result:', profile)
-  console.log('Profile fetch error:', profileError)
+// console.log('Profile data:', profile)
+// console.log('Profile error:', profileError)
 
-  // If profile missing due to error, try to create it
-  if (profileError || !profile) {
-  console.log('Profile missing or error – attempting to create or recover')
-
-  // Try to insert, but if it fails because it already exists, just continue
-  const { error: insertError } = await supabase.from('profiles').insert({
-    id: user.id,
-    email: user.email,
-    role: 'student',
-  })
-
-  if (insertError && insertError.code !== '23505') { // 23505 = duplicate key
-    console.log('Failed to create profile:', insertError)
-    redirect('/')
-  } else {
-    // Either insert succeeded, or profile already exists – refresh to fetch it
-    console.log('Profile exists or created – reloading')
-    redirect('/dashboard/student')
-  }
-}
+  // Role check (still needed)
+  if (profileError || !profile || profile.role !== 'student') redirect('/')
 
   // Fetch lecture notes (only non‑expired)
   const { data: notes } = await supabase
@@ -222,16 +200,16 @@ export default async function StudentDashboard() {
     .select('*')
     .order('created_at', { ascending: false })
 
-
-return (
+  return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Student Dashboard</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">Student Dashboard</h1>
+      {profile.full_name && (
+        <p className="text-xl text-black mb-6">Welcome back, {profile.full_name}!</p>
+      )}
       <div className="grid grid-cols-1 gap-8">
         <section className="bg-white rounded-lg shadow p-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Lecture Notes (available for 24h)</h2>
           <LectureNotesList notes={notes || []} />
-                    <NotesList notes={notes || []} showExpiry />
-          
         </section>
         <section className="bg-white rounded-lg shadow p-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Announcements</h2>
