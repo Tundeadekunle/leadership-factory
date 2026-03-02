@@ -409,10 +409,33 @@ const { error: upsertError } = await supabase
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 {/* <option value="other">Other</option> */}
-                <option value="prefer-not">Prefer not to say</option>
+                {/* <option value="prefer-not">Prefer not to say</option> */}
               </select>
             </div>
 
+
+              {/* Course Selection */}
+              {/* Course */}
+            <div>
+              <label htmlFor="course" className=" block text-sm font-medium text-white">
+                Course of Interest *
+              </label>
+              <select
+                id="course"
+                name="course"
+                required
+                value={formData.course}
+                onChange={handleChange}
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-white border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md bg-[#0B1F3B]"
+              >
+                <option value="">Select a course</option>
+                {courses.map((course) => (
+                  <option key={course} value={course}>
+                    {course}
+                  </option>
+                ))}
+              </select>
+            </div>
             {/* WhatsApp Number */}
             <div>
               <label htmlFor="whatsapp" className="block text-sm font-medium text-white">
@@ -446,27 +469,7 @@ const { error: upsertError } = await supabase
               />
             </div>
 
-            {/* Course */}
-            <div>
-              <label htmlFor="course" className=" block text-sm font-medium text-white">
-                Course of Interest *
-              </label>
-              <select
-                id="course"
-                name="course"
-                required
-                value={formData.course}
-                onChange={handleChange}
-                className="mt-1 block w-full pl-3 pr-10 py-2 text-white border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md bg-[#0B1F3B]"
-              >
-                <option value="">Select a course</option>
-                {courses.map((course) => (
-                  <option key={course} value={course}>
-                    {course}
-                  </option>
-                ))}
-              </select>
-            </div>
+            
           </div>
 
           {error && (
