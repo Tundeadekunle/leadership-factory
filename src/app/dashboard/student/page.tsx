@@ -163,6 +163,7 @@ import { redirect } from 'next/navigation'
 import LectureNotesList from '@/components/LectureNotesList'
 import AnnouncementsList from '@/components/AnnouncementsList'
 import AssessmentsList from '@/components/AssessmentsList'
+import Link from 'next/link'
 
 export default async function StudentDashboard() {
   const supabase = await createClient()
@@ -217,6 +218,12 @@ export default async function StudentDashboard() {
         </section>
         <section className="bg-white rounded-lg shadow p-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Assessments</h2>
+          <Link
+                href="/dashboard/student/assessments/"
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-900 hover:text-white transition"
+              >
+                Assessment
+              </Link>
           <AssessmentsList assessments={assessments || []} />
         </section>
       </div>
