@@ -20,15 +20,19 @@
 }
 
 html {
-  -webkit-font-smoothing: antialiased;  /* or subpixel-antialiased */
+  /* -webkit-font-smoothing: antialiased;  
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility; */
+
+  -webkit-font-smoothing: auto;
+  text-rendering: optimizeSpeed;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: var(--font-open-sans), var(--font-montserrat), Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
