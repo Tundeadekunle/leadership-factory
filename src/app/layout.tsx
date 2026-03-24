@@ -94,7 +94,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable} ${montserrat.variable}`}>
+      <body className={`${openSans.variable} ${montserrat.variable} font-sans`}>
         <Navbar />
         <main className="min-h-screen bg-gray-50">{children}</main>
       </body>

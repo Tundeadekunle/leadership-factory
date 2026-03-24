@@ -1,38 +1,37 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/*  Minimal, safe defaults */
 html {
-  /* -webkit-font-smoothing: antialiased;  
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility; */
-
-  -webkit-font-smoothing: auto;
-  text-rendering: optimizeSpeed;
+  text-rendering: optimizeSpeed; /* Avoid heavy font processing */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: var(--font-open-sans), var(--font-montserrat), Arial, sans-serif;
+  font-family: var(--font-open-sans), system-ui, Arial, sans-serif;
+
+  /* ✅ Prevent mobile auto zoom / weird scaling */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+
+  /* ✅ Ensure crisp rendering */
+  transform: none;
+  filter: none;
+}
+
+/* 🚫 Avoid these completely on mobile */
+/*
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-rendering: optimizeLegibility;
+*/
+
+/* Prevent blur from transforms */
+.no-blur {
+  transform: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Crisp text on all devices */
+.text-crisp {
+  text-rendering: optimizeSpeed;
 }
