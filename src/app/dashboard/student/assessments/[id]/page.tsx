@@ -249,43 +249,43 @@ const { data: submissions, error: subError } = await supabase
   }
 
   return (
-    <div className="max-w-full sm:max-w-3xl mx-auto p-4 sm:p-6 antialiased">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">{assessment.title}</h1>
-        <div className="bg-gray-200 px-4 py-2 rounded">
-          Time left: <span className="font-mono font-bold">{timeLeft}</span>
-        </div>
+  <div className="max-w-full sm:max-w-3xl mx-auto p-4 sm:p-6 antialiased">
+    <div className="flex justify-between items-center mb-4">
+      <h1 className="text-2xl font-bold">{assessment.title}</h1>
+      <div className="bg-gray-200 px-4 py-2 rounded">
+        Time left: <span className="font-mono font-bold">{timeLeft}</span>
       </div>
-      <p className="mb-6">{assessment.description}</p>
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-        {questions.map((q, idx) => (
-          <div key={q.id} className="mb-6 border p-4 rounded">
-            <p className="font-medium">{idx + 1}. {q.question_text} ({q.points || 1} pts)</p>
-            <div className="mt-2 space-y-2">
-              {q.options?.map((opt: string, optIdx: number) => (
-                <label key={optIdx} className="flex items-center">
-                  <input
-                    type="radio"
-                    name={q.id}
-                    value={opt}
-                    checked={answers[q.id] === opt}
-                    onChange={(e) => handleAnswerChange(q.id, e.target.value)}
-                    className="mr-2"
-                    required
-                  />
-                  {opt}
-                </label>
-              ))}
-            </div>
-          </div>
-        ))}
-        <button
-          type="submit"
-          className="bg-blue-900 text-white px-6 py-2 rounded"
-        >
-          Submit Assessment
-        </button>
-      </form>
     </div>
-  )
+    <p className="mb-6">{assessment.description}</p>
+    <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+      {questions.map((q, idx) => (
+        <div key={q.id} className="mb-6 border p-4 rounded">
+          <p className="font-medium">{idx + 1}. {q.question_text} ({q.points || 1} pts)</p>
+          <div className="mt-2 space-y-2">
+            {q.options?.map((opt: string, optIdx: number) => (
+              <label key={optIdx} className="flex items-center">
+                <input
+                  type="radio"
+                  name={q.id}
+                  value={opt}
+                  checked={answers[q.id] === opt}
+                  onChange={(e) => handleAnswerChange(q.id, e.target.value)}
+                  className="mr-2"
+                  required
+                />
+                <span className="text-base">{opt}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      ))}
+      <button
+        type="submit"
+        className="bg-blue-900 text-white px-6 py-2 rounded"
+      >
+        Submit Assessment
+      </button>
+    </form>
+  </div>
+)
 }
