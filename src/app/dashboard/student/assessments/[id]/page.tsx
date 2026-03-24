@@ -249,7 +249,7 @@ const { data: submissions, error: subError } = await supabase
   }
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-full sm:max-w-3xl mx-auto p-4 sm:p-6 antialiased">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">{assessment.title}</h1>
         <div className="bg-gray-200 px-4 py-2 rounded">

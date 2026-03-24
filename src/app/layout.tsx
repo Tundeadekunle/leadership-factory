@@ -76,9 +76,15 @@ const openSans = Open_Sans({
   variable: '--font-open-sans',
 })
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  viewportFit: 'cover',
+}
+
 export const metadata: Metadata = {
   title: 'Skill Leadership Factory',
-  description: 'Empower your learning journey',
+  description: 'Virtual assisstant training, tech training in Abeokuta, Ogun State, Nigeria',
 }
 
 export default function RootLayout({
@@ -88,7 +94,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${openSans.variable}`}>
+      <body className={`${openSans.variable} ${montserrat.variable} antialiased`}>
         <Navbar />
         <main className="min-h-screen bg-gray-50">{children}</main>
       </body>
