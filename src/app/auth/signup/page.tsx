@@ -216,6 +216,7 @@ import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { createProfile } from './actions'
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -285,24 +286,22 @@ export default function SignUp() {
 // }
 
 
-const { error: upsertError } = await supabase
-      .from('profiles')
-      .upsert({
-        id: authData.user.id,
-        email: authData.user.email,
-        role: 'student',
-        full_name: formData.fullName,
-        gender: formData.gender,
-        whatsapp_number: formData.whatsapp,
-        address: formData.address,
-        course: formData.course,
-      })
+    const result = await createProfile({
+      id: authData.user.id,
+      email: authData.user.email as string,
+      full_name: formData.fullName,
+      gender: formData.gender,
+      whatsapp_number: formData.whatsapp,
+      address: formData.address,
+      course: formData.course,
+    })
 
-    if (upsertError) {
-      console.error('Profile upsert failed:', upsertError)
-      setError('Failed to save profile details: ' + upsertError.message)
+    if (result.error) {
+      console.error('Profile upsert failed:', result.error)
+      setError('Failed to save profile details: ' + result.error)
     } else {
       // Success – redirect to dashboard
+      // Note: If email confirmation is required, you might want to redirect to a 'Check your email' page instead.
       router.push('/dashboard/student')
     }
 
