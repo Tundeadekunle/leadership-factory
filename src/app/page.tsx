@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
+import RevealSection from '@/components/RevealSection'
 
 export default async function LandingPage() {
   const supabase = await createClient()
@@ -24,13 +25,14 @@ export default async function LandingPage() {
 return (
     <>
       {/* Hero Section */}
-      <section className="bg-[#0B1F3B] text-white py-20">
+      <RevealSection as="section" className="relative overflow-hidden bg-[#0B1F3B] text-white py-20">
+        <div className="hero-bg-glow" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="font-heading text-xl md:text-5xl lg:text-6xl font-bold mb-6">
               Build In-Demand Virtual Assistant Skills <span className="text-secondary">That Employers Trust</span>
             </h1>
-            <p className="text-[15px]  md:text-xl max-w-3xl mx-auto mb-10">
+            <p className="text-[15px] md:text-xl max-w-3xl mx-auto mb-10">
               Structured, practical training designed to produce confident, job-ready Virtual Assistant.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -47,18 +49,18 @@ return (
                 Contact Us
               </Link> */}
               <Link
-                                href="/auth/signup"
-                                className="bg-blue-900 text-primary px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition"
-                              >
-                                Sign Up
-                              </Link>
+                href="/auth/signup"
+                className="bg-blue-900 text-primary px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition hero-pulse-button"
+              >
+                Sign Up
+              </Link>
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Institutional Introduction */}
-      <section className="py-16 bg-[#0B1F3B]">
+      <RevealSection as="section" className="py-16 bg-[#0B1F3B]" rootMargin="0px 0px -160px 0px">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -89,16 +91,21 @@ return (
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Flagship Program Overview */}
-      <section className="py-16 bg-[#0B1F3B]">
+      <RevealSection as="section" className="py-16 bg-[#0B1F3B]" rootMargin="0px 0px -160px 0px">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading text-3xl font-bold text-[#C6A75E] text-center mb-12">
             Our Flagship Program
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition bg-white">
+            <RevealSection
+              as="div"
+              className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition bg-white"
+              rootMargin="0px 0px -120px 0px"
+              delay={50}
+            >
               <h3 className="font-heading text-xl font-semibold text-primary mb-3">
                 Professional Virtual Assistant
               </h3>
@@ -108,8 +115,13 @@ return (
               {/* <Link href="/programs/business" className="text-secondary font-medium hover:underline">
                 Learn more →
               </Link> */}
-            </div>
-            <div className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition bg-white">
+            </RevealSection>
+            <RevealSection
+              as="div"
+              className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition bg-white"
+              rootMargin="0px 0px -120px 0px"
+              delay={150}
+            >
               <h3 className="font-heading text-xl font-semibold text-primary mb-3">
                 Duration
               </h3>
@@ -122,8 +134,13 @@ return (
               {/* <Link href="/programs/data-science" className="text-secondary font-medium hover:underline">
                 Learn more →
               </Link> */}
-            </div>
-            <div className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition bg-white">
+            </RevealSection>
+            <RevealSection
+              as="div"
+              className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition bg-white"
+              rootMargin="0px 0px -120px 0px"
+              delay={250}
+            >
               <h3 className="font-heading text-xl font-semibold text-primary mb-3">
                 Schedule
               </h3>
@@ -133,19 +150,24 @@ return (
               {/* <Link href="/programs/marketing" className="text-secondary font-medium hover:underline">
                 Learn more →
               </Link> */}
-            </div>
+            </RevealSection>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-light-gray">
+      <RevealSection as="section" className="py-16 bg-light-gray" rootMargin="0px 0px -160px 0px">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading text-3xl font-bold text-primary text-center mb-12">
             Why Choose Learning Institute?
           </h2>
           <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
+            <RevealSection
+              as="div"
+              className="text-center"
+              rootMargin="0px 0px -120px 0px"
+              delay={50}
+            >
               <div className="bg-[#0B1F3B] text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl text-[#C6A75E] font-bold">1</span>
               </div>
@@ -155,8 +177,13 @@ return (
               {/* <p className="text-gray-600">
                 Learn from industry leaders and experienced educators.
               </p> */}
-            </div>
-            <div className="text-center">
+            </RevealSection>
+            <RevealSection
+              as="div"
+              className="text-center"
+              rootMargin="0px 0px -120px 0px"
+              delay={125}
+            >
               <div className="bg-[#0B1F3B] text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl text-[#C6A75E] font-bold">2</span>
               </div>
@@ -166,8 +193,13 @@ return (
               {/* <p className="text-gray-600">
                 Online, on‑campus, and hybrid options to fit your schedule.
               </p> */}
-            </div>
-            <div className="text-center">
+            </RevealSection>
+            <RevealSection
+              as="div"
+              className="text-center"
+              rootMargin="0px 0px -120px 0px"
+              delay={200}
+            >
               <div className="bg-[#0B1F3B] text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl text-[#C6A75E] font-bold">3</span>
               </div>
@@ -177,8 +209,13 @@ return (
               {/* <p className="text-gray-600">
                 Join a community of alumni across 50+ countries.
               </p> */}
-            </div>
-            <div className="text-center">
+            </RevealSection>
+            <RevealSection
+              as="div"
+              className="text-center"
+              rootMargin="0px 0px -120px 0px"
+              delay={275}
+            >
               <div className="bg-[#0B1F3B] text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl text-[#C6A75E] font-bold">4</span>
               </div>
@@ -188,8 +225,13 @@ return (
               {/* <p className="text-gray-600">
                 Dedicated career services to help you achieve your goals.
               </p> */}
-            </div>
-            <div className="text-center">
+            </RevealSection>
+            <RevealSection
+              as="div"
+              className="text-center"
+              rootMargin="0px 0px -120px 0px"
+              delay={350}
+            >
               <div className="bg-[#0B1F3B] text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl text-[#C6A75E] font-bold">5</span>
               </div>
@@ -199,8 +241,13 @@ return (
               {/* <p className="text-gray-600">
                 Dedicated career services to help you achieve your goals.
               </p> */}
-            </div>
-            <div className="text-center">
+            </RevealSection>
+            <RevealSection
+              as="div"
+              className="text-center"
+              rootMargin="0px 0px -120px 0px"
+              delay={425}
+            >
               <div className="bg-[#0B1F3B] text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl text-[#C6A75E] font-bold">6</span>
               </div>
@@ -210,13 +257,13 @@ return (
               {/* <p className="text-gray-600">
                 Dedicated career services to help you achieve your goals.
               </p> */}
-            </div>
+            </RevealSection>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Specialization Tracks */}
-      <section className="py-16 bg-[#0B1F3B]">
+      <RevealSection as="section" className="py-16 bg-[#0B1F3B]" rootMargin="0px 0px -160px 0px">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading text-3xl font-bold text-[#C6A75E] text-center mb-12">
             Specialization Tracks
@@ -241,10 +288,10 @@ return (
             ))}
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Certification & Performance Standards */}
-      <section className="py-16 bg-[#0B1F3B] text-white">
+      <RevealSection as="section" className="py-16 bg-[#0B1F3B] text-white" rootMargin="0px 0px -160px 0px">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -292,10 +339,10 @@ return (
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Testimonials */}
-      <section className="py-16 bg-light-gray">
+      <RevealSection as="section" className="py-16 bg-light-gray" rootMargin="0px 0px -160px 0px">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading text-3xl font-bold text-primary text-center mb-12">
             What Our Students Say
@@ -345,7 +392,7 @@ return (
             </div>
           </div>
         </div>
-      </section>
+      </RevealSection>
 
       {/* Footer */}
       <Footer />

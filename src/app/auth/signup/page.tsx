@@ -260,6 +260,15 @@ export default function SignUp() {
       return
     }
 
+    // Supabase returns a "fake" user object with an empty identities array 
+    // when a user tries to sign up with an email that is already registered 
+    // (if email enumeration protection is enabled).
+    if (authData.user.identities && authData.user.identities.length === 0) {
+      setError('An account with this email already exists. Please sign in or reset your password.')
+      setLoading(false)
+      return
+    }
+
     // 2. Update the profile with additional info
     const { error: updateError } = await supabase
       .from('profiles')

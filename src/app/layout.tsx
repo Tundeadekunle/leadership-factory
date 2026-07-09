@@ -83,8 +83,8 @@ export const viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Skill Leadership Factory',
-  description: 'Virtual assisstant training, tech training in Abeokuta, Ogun State, Nigeria',
+  title: 'Skilled Leadership Factory',
+  description: 'Virtual assisstant training, tech training in Nigeria',
 }
 
 export default function RootLayout({
