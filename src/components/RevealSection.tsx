@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ElementType, type CSSProperties, type ReactNode } from 'react'
 
 type RevealSectionProps = {
-  as?: keyof JSX.IntrinsicElements
+  as?: ElementType
   className?: string
-  style?: React.CSSProperties
-  children: React.ReactNode
+  style?: CSSProperties
+  children: ReactNode
   threshold?: number
   rootMargin?: string
   delay?: number
@@ -42,7 +42,7 @@ export default function RevealSection({
     return () => observer.disconnect()
   }, [threshold, rootMargin, visible])
 
-  const Tag = as as keyof JSX.IntrinsicElements
+  const Tag = (as || 'section') as ElementType
 
   const mergedStyle = {
     ...style,
