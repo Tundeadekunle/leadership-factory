@@ -96,7 +96,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href={favicon?.src || favicon} />
+        <link rel="icon" href={'/'} />
       </head>
       <body className={`${openSans.variable} ${montserrat.variable} font-sans`}>
         <Navbar />
