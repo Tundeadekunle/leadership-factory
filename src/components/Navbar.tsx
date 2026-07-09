@@ -108,6 +108,8 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
+import logo from '@/app/slf_logo.jpg'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
@@ -160,8 +162,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-heading font-bold text-secondary">
-              Skill Leadership Factory
+            <Link href="/" className="flex items-center">
+              <Image src={logo} alt="Skill Leadership Factory" width={48} height={48} className="mr-3 rounded-sm" />
+              <span className="text-xl font-heading font-bold text-secondary">Skill Leadership Factory</span>
             </Link>
           </div>
           

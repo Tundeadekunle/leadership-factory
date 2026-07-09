@@ -209,7 +209,7 @@ export default async function StudentDashboard() {
       )}
       <div className="grid grid-cols-1 gap-8">
         <section className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Lecture Notes (available for 24h)</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Lecture Notes (available for 5 days)</h2>
           <LectureNotesList notes={notes || []} />
         </section>
         <section className="bg-white rounded-lg shadow p-6">

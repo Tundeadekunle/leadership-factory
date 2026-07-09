@@ -69,7 +69,8 @@ export default function NotesList({ notes, showExpiry }: { notes: Note[]; showEx
     <ul className="divide-y divide-gray-200">
       {notes.map((note) => {
         const expiresIn = new Date(note.expires_at).getTime() - Date.now()
-        const hoursLeft = Math.max(0, Math.floor(expiresIn / (1000 * 60 * 60)))
+        const daysLeft = Math.floor(expiresIn / (1000 * 60 * 60 * 24))
+        const hoursLeft = Math.max(0, Math.floor((expiresIn % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))
         return (
           <li key={note.id} className="py-4">
             <h3 className="text-lg font-medium text-gray-900">{note.title}</h3>
@@ -78,7 +79,7 @@ export default function NotesList({ notes, showExpiry }: { notes: Note[]; showEx
             </p>
             {showExpiry && (
               <p className="text-sm text-gray-500">
-                Expires in: {hoursLeft} hour{hoursLeft !== 1 ? 's' : ''}
+                Expires in: {daysLeft > 0 ? `${daysLeft} day${daysLeft > 1 ? 's' : ''} ` : ''}{hoursLeft} hour{hoursLeft !== 1 ? 's' : ''}
               </p>
             )}
             <div className="prose prose-sm max-w-none bg-gray-50 p-4 rounded-md mt-2 whitespace-pre-wrap">

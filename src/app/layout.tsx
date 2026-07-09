@@ -51,6 +51,7 @@ import type { Metadata } from 'next'
 import { Montserrat, Open_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
+import favicon from '@/app/favicon (1).ico'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -94,6 +95,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href={favicon?.src || favicon} />
+      </head>
       <body className={`${openSans.variable} ${montserrat.variable} font-sans`}>
         <Navbar />
         <main className="min-h-screen bg-gray-50">{children}</main>

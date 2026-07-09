@@ -136,9 +136,9 @@ export default function UploadNoteForm() {
       return
     }
 
-    // Calculate expiration (24 hours from now)
+    // Calculate expiration (5 days from now)
     const expiresAt = new Date()
-    expiresAt.setHours(expiresAt.getHours() + 24)
+    expiresAt.setDate(expiresAt.getDate() + 5)
 
     // Insert note with content (no file_url)
     const { error: dbError } = await supabase.from('lecture_notes').insert({
