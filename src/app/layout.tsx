@@ -51,7 +51,6 @@ import type { Metadata } from 'next'
 import { Montserrat, Open_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
-import favicon from '@/app/favicon.ico'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -138,7 +137,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href={favicon} />
+        <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href={SITE_URL} />
         <script type="application/ld+json">
           {JSON.stringify({
