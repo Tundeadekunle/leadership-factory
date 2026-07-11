@@ -51,7 +51,7 @@ import type { Metadata } from 'next'
 import { Montserrat, Open_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
-import favicon from '@/app/favicon (1).ico'
+import favicon from '@/app/favicon.ico'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -83,9 +83,51 @@ export const viewport = {
   viewportFit: 'cover',
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+
 export const metadata: Metadata = {
-  title: 'Skilled Leadership Factory',
-  description: 'Virtual assisstant training, tech training in Nigeria',
+  title: {
+    default: 'Skilled Leadership Factory',
+    template: '%s | Skilled Leadership Factory',
+  },
+  description: 'Virtual assistant training, tech training in Nigeria',
+  keywords: [
+    'leadership',
+    'training',
+    'virtual assistant',
+    'tech training',
+    'Abeokuta',
+    'Ogun State',
+  ],
+  authors: [{ name: 'Skilled Leadership Factory' }],
+  openGraph: {
+    title: 'Skilled Leadership Factory',
+    description: 'Virtual assistant training, tech training in Nigeria',
+    url: SITE_URL,
+    siteName: 'Skilled Leadership Factory',
+    type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/slf_logo.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Skilled Leadership Factory',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Skilled Leadership Factory',
+    description: 'Virtual assistant training, tech training in Nigeria',
+    images: [`${SITE_URL}/slf_logo.jpg`],
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
 }
 
 export default function RootLayout({
@@ -96,7 +138,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href={'/'} />
+        <link rel="icon" href={favicon} />
+        <link rel="canonical" href={SITE_URL} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: 'Skilled Leadership Factory',
+            url: SITE_URL,
+          })}
+        </script>
       </head>
       <body className={`${openSans.variable} ${montserrat.variable} font-sans`}>
         <Navbar />
