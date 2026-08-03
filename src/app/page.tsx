@@ -26,8 +26,12 @@ return (
     <>
       {/* Hero Section */}
       <RevealSection as="section" className="relative overflow-hidden bg-[#0B1F3B] text-white py-20">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25 pointer-events-none"
+          style={{ backgroundImage: "url('/slf-hero.jpg')" }}
+        />
         <div className="hero-bg-glow" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="font-heading text-xl md:text-5xl lg:text-6xl font-bold mb-6">
               Build In-Demand Virtual Assistant Skills <span className="text-secondary">That Employers Trust</span>
@@ -156,8 +160,12 @@ return (
       </RevealSection>
 
       {/* Why Choose Us */}
-      <RevealSection as="section" className="py-16 bg-light-gray" rootMargin="0px 0px -160px 0px">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <RevealSection as="section" className="relative overflow-hidden py-16 bg-light-gray" rootMargin="0px 0px -160px 0px">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15 pointer-events-none"
+          style={{ backgroundImage: "url('/slf-why.jpg')" }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-heading text-3xl font-bold text-primary text-center mb-12">
             Why Choose Learning Institute?
           </h2>
