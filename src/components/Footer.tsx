@@ -50,7 +50,7 @@ export default function Footer() {
               <a href="#" className="text-white hover:text-secondary transition">
                 <FaLinkedin size={24} />
               </a>
-              <a href="#" className="text-white hover:text-secondary transition">
+              <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=jow26yq" className="text-white hover:text-secondary transition">
                 <FaInstagram size={24} />
               </a>
             </div>
